@@ -1,0 +1,38 @@
+<div class="row">
+  <div class="col-xs-12">
+    <form [formGroup]="shoppingForm" (ngSubmit)="onAddItem()">
+      <div class="row">
+        <div class="col-sm-5 form-group">
+          <label for="name">Name</label>
+          <input
+            type="text"
+            id="name"
+            formControlName="name"
+            class="form-control">
+        </div>
+        <div class="col-sm-2 form-group">
+          <label for="amount">Amount</label>
+          <input
+            type="text"
+            id="amount"
+            formControlName="amount"
+            class="form-control">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <button *ngIf="!editMode"
+          class="btn btn-success" 
+          [disabled]="!shoppingForm.valid && shoppingForm.touched" 
+          type="submit">Add</button>
+          <button *ngIf="editMode"
+          class="btn btn-success" 
+          [disabled]="!shoppingForm.valid && shoppingForm.touched" 
+          type="submit">Update</button>
+          <button *ngIf="editMode" class="btn btn-danger" type="button" (click)="onDelete()">Delete</button>
+          <button class="btn btn-primary" type="button" (click)="onClear()">Clear</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
